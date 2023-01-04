@@ -53,4 +53,5 @@ def seq_phylogeny():
     ids = list(database.keys()) + list(unknown.keys())
     sequences = list(database.values()) + list(unknown.values())
 
+    # construct distance matrix to draw phylogenetic tree with Bio.Phylo module
     
