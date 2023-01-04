@@ -21,5 +21,11 @@ def read_fasta_seq():
     unknown = {record.id : str(record.seq) for record in SeqIO.parse("mystery.fa", "fasta")}
     
 
-    
+    def hamming_distance(seq1, seq2):
+        """
+        Determine hamming distance between two sequences i.e., number of mutations between two sequences
+        """
+        return sum([1 for x, y in zip(seq1, seq2) if x!=y])
+
+
 
