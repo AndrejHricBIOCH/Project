@@ -41,8 +41,13 @@ for Id, seq in database.items():
 # find out the closest breed and print the result
 closest_breed = sorted(pairs.items(), key=lambda x: x[1])[0]
 Id, seq, mut = closest_breed[0][0], closest_breed[0][1], closest_breed[1]
-# print truncated version +seq id of the closest sequence to mystery seq in dog_breeds database 
-print(f"The closest breed (mutation={mut}) to unknown sequence in the database is:\n{seq[:90]}...\t{Id}")
+
+# output truncated version +seq id of the closest sequence to mystery seq in dog_breeds database into closest_sequence.txt file
+with open('closest_sequence.txt', 'w') as f1:
+    f1.write(f"The closest breed (mutation={mut}) to unknown sequence in the database is:\n{seq[:90]}...\t{Id}")
+    
+#to check  print truncated version +seq id of the closest sequence to mystery seq in dog_breeds database 
+# print(f"The closest breed (mutation={mut}) to unknown sequence in the database is:\n{seq[:90]}...\t{Id}")
 
 
 """
@@ -59,8 +64,15 @@ for i, x in enumerate(sequences):
         if i != j:
             distM[i][j] = hamming_distance(x, y)
 
+
+#import matplotlib 
+import matplotlib
+import matplotlib.pyplot as plt
+
 # construct and draw the phylogenetic tree with upgma method
 dm = DistanceMatrix(ids, distM)
 constructor = DistanceTreeConstructor()
 tree = constructor.upgma(dm)
-print(Phylo.draw_ascii(tree))
+
+# to check tree-->
+# print(Phylo.draw_ascii(tree))
