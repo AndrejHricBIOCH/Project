@@ -34,14 +34,16 @@ def closest_sequence():
     # take the mystery sequence from unknown dict
     mystery = unknown['gb|KM061522.1|']
     pairs = {}
-    
     # iterate over all database sequences and compare with mystery sequence
     for Id, seq in database.items():
-        pairs[seq] = hamming_distance(seq, mystery)
-
+        pairs[(Id, seq)] = hamming_distance(seq, mystery)
+        
     # find out the closest breed and print the result
     closest_breed = sorted(pairs.items(), key=lambda x: x[1])[0]
-    return (f"The closest breed (mutation={closest_breed[1]}) to unknown sequence in the database is:\n{closest_breed[0]}")
+    Id, seq, mut = closest_breed[0][0], closest_breed[0][1], closest_breed[1]
+
+    # print truncated sequence of the closest breed sequence () +sequence id
+    return(f"The closest breed (mutation={mut}) to unknown sequence in the database is:\n{seq[:90]}...\t{Id}")
 
 def seq_phylogeny():
     """
