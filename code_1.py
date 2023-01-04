@@ -59,3 +59,9 @@ def seq_phylogeny():
         for j, y in zip(range(i), sequences):
             if i != j:
                 distM[i][j] = hamming_distance(x, y)
+    
+    # construct and draw the phylogenetic tree with upgma method
+    dm = DistanceMatrix(ids, distM)
+    constructor = DistanceTreeConstructor()
+    tree = constructor.upgma(dm)
+    return (Phylo.draw_ascii(tree))
