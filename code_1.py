@@ -54,4 +54,8 @@ def seq_phylogeny():
     sequences = list(database.values()) + list(unknown.values())
 
     # construct distance matrix to draw phylogenetic tree with Bio.Phylo module
-    
+    distM = [[0]*i for i in range(1, len(sequences)+1)]
+    for i, x in enumerate(sequences):
+        for j, y in zip(range(i), sequences):
+            if i != j:
+                distM[i][j] = hamming_distance(x, y)
