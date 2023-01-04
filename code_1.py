@@ -27,5 +27,19 @@ def read_fasta_seq():
         """
         return sum([1 for x, y in zip(seq1, seq2) if x!=y])
 
+def closest_sequence():
+    """
+    Comparing mystery sequence to dog_breed database and finiding the closest sequence
+    """
+    # take the mystery sequence from unknown dict
+    mystery = unknown['gb|KM061522.1|']
+    pairs = {}
+    
+    # iterate over all database sequences and compare with mystery sequence
+    for Id, seq in database.items():
+        pairs[seq] = hamming_distance(seq, mystery)
 
+    # find out the closest breed and print the result
+    closest_breed = sorted(pairs.items(), key=lambda x: x[1])[0]
+    return (f"The closest breed (mutation={closest_breed[1]}) to unknown sequence in the database is:\n{closest_breed[0]}")
 
