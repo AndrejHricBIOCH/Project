@@ -47,4 +47,10 @@ def closest_sequence():
 
 def seq_phylogeny():
     """
-    Computation of a phylogenetic tree, via construction of a distance matrix and using phylo module"""
+    Computation of a phylogenetic tree, via construction of a distance matrix and using phylo module
+    """
+    # extract ids and sequences from dict record
+    ids = list(database.keys()) + list(unknown.keys())
+    sequences = list(database.values()) + list(unknown.values())
+
+    
