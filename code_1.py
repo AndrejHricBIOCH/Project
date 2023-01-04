@@ -69,10 +69,26 @@ for i, x in enumerate(sequences):
 import matplotlib
 import matplotlib.pyplot as plt
 
+
 # construct and draw the phylogenetic tree with upgma method
 dm = DistanceMatrix(ids, distM)
 constructor = DistanceTreeConstructor()
 tree = constructor.upgma(dm)
+tree.root_at_midpoint()
+tree.ladderize(reverse = True)
+tree.root.color= 'gray'
 
 # to check tree-->
 # print(Phylo.draw_ascii(tree))
+
+#fig= Phylo.draw(tree)
+fig = plt.figure(figsize = (10,22), dpi=100) #create figure and set size
+
+#matplotlib figure atributes 
+matplotlib.rc('font', size = 7)
+axes = fig.add_subplot(1, 1, 1)
+matplotlib.rc('xtick', labelsize = 17)
+matplotlib.rc('ytick', labelsize = 17)
+plt.xlabel('xlabel', fontsize = 17)
+plt.ylabel('ylabel', fontsize = 17)
+Phylo.draw(tree, axes=axes)
