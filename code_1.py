@@ -43,3 +43,6 @@ def closest_sequence():
     closest_breed = sorted(pairs.items(), key=lambda x: x[1])[0]
     return (f"The closest breed (mutation={closest_breed[1]}) to unknown sequence in the database is:\n{closest_breed[0]}")
 
+def seq_phylogeny():
+    """
+    Computation of a phylogenetic tree, via construction of a distance matrix and using phylo module"""
