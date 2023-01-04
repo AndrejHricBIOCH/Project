@@ -94,4 +94,4 @@ plt.ylabel('ylabel', fontsize = 17)
 Phylo.draw(tree, axes=axes)
 
 #export figure to result directory
-fig.savefig('../results/Dog_breeds_phylotree.png') 
+fig.savefig('../results/dog_breeds_phylotree.png') 
